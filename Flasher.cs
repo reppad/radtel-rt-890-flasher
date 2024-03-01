@@ -413,16 +413,41 @@ namespace RT_890_Flasher {
 
 		private void FastButton_CheckedChanged(object sender, EventArgs e)
 		{
-			SlowButton.Checked = !FastButton.Checked;
-		}
+            SlowButton.Checked = !FastButton.Checked;
+        }
 
 		private void SlowButton_CheckedChanged(object sender, EventArgs e)
 		{
-			FastButton.Checked = !SlowButton.Checked;
+            var currentItem = sender as ToolStripMenuItem;
+            if (currentItem == FastButton) { SlowButton.Checked = !SlowButton.Checked; return; }
+            FastButton.Checked = !SlowButton.Checked;
 			if (IsFirstTime && SlowButton.Checked) {
 				IsFirstTime = false;
 				MessageBox.Show("Press and hold Side Key 1 before turning your radio!", "Information");
 			}
 		}
-	}
+
+
+        private void FastButton_Click(object sender, EventArgs e)
+        {
+            var currentItem = sender as ToolStripMenuItem;
+            if (currentItem == FastButton) { FastButton.Checked = true; SlowButton.Checked = false; return; }
+			FastButton.Checked = !FastButton.Checked;
+            SlowButton.Checked = !FastButton.Checked;
+        }
+
+        private void SlowButton_Click(object sender, EventArgs e)
+        {
+            var currentItem = sender as ToolStripMenuItem;
+            if (currentItem == SlowButton) { SlowButton.Checked = true; FastButton.Checked = false; return; }
+            SlowButton.Checked = !FastButton.Checked;
+            FastButton.Checked = !FastButton.Checked;
+            
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+			Environment.Exit(0);
+        }
+    }
 }
