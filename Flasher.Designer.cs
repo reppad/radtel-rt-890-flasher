@@ -51,14 +51,14 @@ namespace RT_890_Flasher {
             this.EraseButton = new System.Windows.Forms.Button();
             this.FlashButton = new System.Windows.Forms.Button();
             this.CommunicationGroupBox = new System.Windows.Forms.GroupBox();
+            this.COMPortLabel = new System.Windows.Forms.Label();
+            this.BaudRateLabel = new System.Windows.Forms.Label();
+            this.SpeedMode = new System.Windows.Forms.ComboBox();
+            this.AutoUART = new System.Windows.Forms.CheckBox();
+            this.RefreshButton = new System.Windows.Forms.Button();
             this.ComPorts = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Progress = new System.Windows.Forms.ToolStripProgressBar();
-            this.RefreshButton = new System.Windows.Forms.Button();
-            this.AutoUART = new System.Windows.Forms.CheckBox();
-            this.SpeedMode = new System.Windows.Forms.ComboBox();
-            this.BaudRateLabel = new System.Windows.Forms.Label();
-            this.COMPortLabel = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -134,6 +134,7 @@ namespace RT_890_Flasher {
             this.LogButton.TabIndex = 18;
             this.LogButton.Text = "&Log";
             this.LogButton.UseVisualStyleBackColor = false;
+            this.LogButton.Click += new System.EventHandler(this.LogButton_Click);
             // 
             // BackupButton
             // 
@@ -186,6 +187,58 @@ namespace RT_890_Flasher {
             this.CommunicationGroupBox.TabStop = false;
             this.CommunicationGroupBox.Text = "Communication";
             // 
+            // COMPortLabel
+            // 
+            this.COMPortLabel.AutoSize = true;
+            this.COMPortLabel.Location = new System.Drawing.Point(145, 27);
+            this.COMPortLabel.Name = "COMPortLabel";
+            this.COMPortLabel.Size = new System.Drawing.Size(53, 13);
+            this.COMPortLabel.TabIndex = 7;
+            this.COMPortLabel.Text = "COM Port";
+            // 
+            // BaudRateLabel
+            // 
+            this.BaudRateLabel.AutoSize = true;
+            this.BaudRateLabel.Location = new System.Drawing.Point(6, 27);
+            this.BaudRateLabel.Name = "BaudRateLabel";
+            this.BaudRateLabel.Size = new System.Drawing.Size(58, 13);
+            this.BaudRateLabel.TabIndex = 6;
+            this.BaudRateLabel.Text = "Baud Rate";
+            // 
+            // SpeedMode
+            // 
+            this.SpeedMode.FormattingEnabled = true;
+            this.SpeedMode.Items.AddRange(new object[] {
+            "115200",
+            "19200"});
+            this.SpeedMode.Location = new System.Drawing.Point(9, 51);
+            this.SpeedMode.Name = "SpeedMode";
+            this.SpeedMode.Size = new System.Drawing.Size(100, 21);
+            this.SpeedMode.TabIndex = 5;
+            this.SpeedMode.SelectedIndexChanged += new System.EventHandler(this.SpeedMode_SelectedIndexChanged);
+            // 
+            // AutoUART
+            // 
+            this.AutoUART.AutoSize = true;
+            this.AutoUART.Location = new System.Drawing.Point(216, 76);
+            this.AutoUART.Name = "AutoUART";
+            this.AutoUART.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.AutoUART.Size = new System.Drawing.Size(81, 17);
+            this.AutoUART.TabIndex = 4;
+            this.AutoUART.Text = "Auto UART";
+            this.AutoUART.UseVisualStyleBackColor = true;
+            this.AutoUART.CheckedChanged += new System.EventHandler(this.AutoUART_CheckedChanged);
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(231, 47);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(66, 23);
+            this.RefreshButton.TabIndex = 3;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
             // ComPorts
             // 
             this.ComPorts.FormattingEnabled = true;
@@ -210,58 +263,6 @@ namespace RT_890_Flasher {
             this.Progress.Name = "Progress";
             this.Progress.Size = new System.Drawing.Size(300, 16);
             this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
-            // RefreshButton
-            // 
-            this.RefreshButton.Location = new System.Drawing.Point(231, 47);
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(66, 23);
-            this.RefreshButton.TabIndex = 3;
-            this.RefreshButton.Text = "Refresh";
-            this.RefreshButton.UseVisualStyleBackColor = true;
-            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-            // 
-            // AutoUART
-            // 
-            this.AutoUART.AutoSize = true;
-            this.AutoUART.Location = new System.Drawing.Point(216, 76);
-            this.AutoUART.Name = "AutoUART";
-            this.AutoUART.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.AutoUART.Size = new System.Drawing.Size(81, 17);
-            this.AutoUART.TabIndex = 4;
-            this.AutoUART.Text = "Auto UART";
-            this.AutoUART.UseVisualStyleBackColor = true;
-            this.AutoUART.CheckedChanged += new System.EventHandler(this.AutoUART_CheckedChanged);
-            // 
-            // SpeedMode
-            // 
-            this.SpeedMode.FormattingEnabled = true;
-            this.SpeedMode.Items.AddRange(new object[] {
-            "115200",
-            "19200"});
-            this.SpeedMode.Location = new System.Drawing.Point(9, 51);
-            this.SpeedMode.Name = "SpeedMode";
-            this.SpeedMode.Size = new System.Drawing.Size(100, 21);
-            this.SpeedMode.TabIndex = 5;
-            this.SpeedMode.SelectedIndexChanged += new System.EventHandler(this.SpeedMode_SelectedIndexChanged);
-            // 
-            // BaudRateLabel
-            // 
-            this.BaudRateLabel.AutoSize = true;
-            this.BaudRateLabel.Location = new System.Drawing.Point(6, 27);
-            this.BaudRateLabel.Name = "BaudRateLabel";
-            this.BaudRateLabel.Size = new System.Drawing.Size(58, 13);
-            this.BaudRateLabel.TabIndex = 6;
-            this.BaudRateLabel.Text = "Baud Rate";
-            // 
-            // COMPortLabel
-            // 
-            this.COMPortLabel.AutoSize = true;
-            this.COMPortLabel.Location = new System.Drawing.Point(145, 27);
-            this.COMPortLabel.Name = "COMPortLabel";
-            this.COMPortLabel.Size = new System.Drawing.Size(53, 13);
-            this.COMPortLabel.TabIndex = 7;
-            this.COMPortLabel.Text = "COM Port";
             // 
             // groupBox3
             // 
